@@ -1,8 +1,9 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "motion/react";
+import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import {
   Phone, MapPin, Clock, Star, ChevronRight, ChevronLeft,
-  Menu, X, MessageCircle, Calendar, Shield, Award, Users,
+  Menu, X, Calendar, Shield, Award, Users,
   CheckCircle, Heart, ArrowRight, Instagram, Facebook,
   Mail, AlertTriangle, ChevronDown, Printer, Copy, Check,
   Smile, Zap, Search
@@ -73,6 +74,10 @@ function ServiceIcon({ icon, className = "" }: { icon: string; className?: strin
       {SERVICE_ICON_MAP[icon] ?? <Heart size={18} className="text-primary" />}
     </div>
   );
+}
+
+function WhatsAppBrandIcon({ className = "", size = 20 }: { className?: string; size?: number }) {
+  return <WhatsAppIcon className={className} sx={{ fontSize: size }} />;
 }
 
 // ─── Testimonials Data ────────────────────────────────────────────────────────
@@ -404,7 +409,7 @@ function Footer({ setPage, openBooking }: { setPage: (p: string) => void; openBo
               <Facebook size={16} />
             </a>
             <a href={`https://wa.me/${CLINIC.whatsapp}`} target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors">
-              <MessageCircle size={16} />
+              <WhatsAppBrandIcon size={18} />
             </a>
           </div>
         </div>
@@ -437,7 +442,7 @@ function Footer({ setPage, openBooking }: { setPage: (p: string) => void; openBo
             </li>
             <li>
               <a href={`https://wa.me/${CLINIC.whatsapp}`} target="_blank" rel="noopener noreferrer" className="flex items-start gap-2.5 text-white/60 hover:text-white text-sm transition-colors">
-                <MessageCircle size={14} className="mt-0.5 shrink-0 text-accent" /> WhatsApp Us
+                <span className="mt-0.5 shrink-0 text-accent"><WhatsAppBrandIcon size={16} /></span> WhatsApp Us
               </a>
             </li>
             <li>
@@ -492,7 +497,7 @@ function WhatsAppButton() {
       whileTap={{ scale: 0.96 }}
       aria-label="Chat with Fastident on WhatsApp"
     >
-      <MessageCircle size={20} className="shrink-0" />
+      <WhatsAppBrandIcon size={20} className="shrink-0" />
       <span className="hidden sm:block">Chat with Us</span>
     </motion.a>
   );
@@ -523,7 +528,7 @@ function EmergencyModal({ onClose }: { onClose: () => void }) {
             <Phone size={18} /> Call {CLINIC.phone1Display}
           </a>
           <a href={`https://wa.me/${CLINIC.whatsapp}?text=EMERGENCY%3A%20I%20need%20urgent%20dental%20care%20now.`} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2.5 bg-[#25D366] text-white font-bold py-3.5 rounded-xl hover:bg-[#1da851] transition-colors text-base">
-            <MessageCircle size={18} /> WhatsApp Emergency
+            <WhatsAppBrandIcon size={18} /> WhatsApp Emergency
           </a>
           <a href={`tel:+234${CLINIC.phone2.slice(1)}`} className="flex items-center justify-center gap-2 border border-border text-foreground font-medium py-3 rounded-xl hover:bg-muted transition-colors text-sm">
             <Phone size={15} /> Alternate: {CLINIC.phone2Display}
@@ -596,7 +601,7 @@ function PatientPortalModal({ onClose }: { onClose: () => void }) {
             <p className="text-xs text-muted-foreground mb-4">To reschedule or cancel, call {CLINIC.phone1Display} or WhatsApp us with your reference number.</p>
             <div className="flex gap-2">
               <a href={`tel:+234${CLINIC.phone1.slice(1)}`} className="flex-1 flex items-center justify-center gap-1.5 border border-border rounded-xl py-2.5 text-sm font-medium hover:bg-muted transition-colors"><Phone size={14} /> Call</a>
-              <a href={`https://wa.me/${CLINIC.whatsapp}?text=I%20need%20to%20reschedule%20appointment%20${MOCK_APPT.ref}`} target="_blank" rel="noopener noreferrer" className="flex-1 flex items-center justify-center gap-1.5 bg-[#25D366] text-white rounded-xl py-2.5 text-sm font-medium hover:bg-[#1da851] transition-colors"><MessageCircle size={14} /> WhatsApp</a>
+              <a href={`https://wa.me/${CLINIC.whatsapp}?text=I%20need%20to%20reschedule%20appointment%20${MOCK_APPT.ref}`} target="_blank" rel="noopener noreferrer" className="flex-1 flex items-center justify-center gap-1.5 bg-[#25D366] text-white rounded-xl py-2.5 text-sm font-medium hover:bg-[#1da851] transition-colors"><WhatsAppBrandIcon size={16} /> WhatsApp</a>
             </div>
           </div>
         )}
@@ -865,7 +870,7 @@ function BookingModal({ onClose, preService }: { onClose: () => void; preService
                   <Printer size={14} /> Print
                 </button>
                 <a href={`https://wa.me/${CLINIC.whatsapp}?text=I%20just%20booked%20appointment%20${data.ref}%20at%20Fastident.%20Ref%3A%20${data.ref}`} target="_blank" rel="noopener noreferrer" className="flex-1 flex items-center justify-center gap-1.5 bg-[#25D366] text-white rounded-xl py-2.5 text-sm font-medium hover:bg-[#1da851] transition-colors">
-                  <MessageCircle size={14} /> Share
+                  <WhatsAppBrandIcon size={16} /> Share
                 </a>
               </div>
 
@@ -1075,7 +1080,7 @@ function WhyChooseUs({ openBooking }: { openBooking: () => void }) {
             <div className="flex flex-col sm:flex-row gap-3">
               <Btn variant="accent" onClick={openBooking}>Book Your Visit</Btn>
               <a href={`https://wa.me/${CLINIC.whatsapp}`} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 border border-white/30 text-white font-semibold rounded-full px-6 py-3 text-sm hover:bg-white/10 transition-colors">
-                <MessageCircle size={16} /> Ask a Question
+                <WhatsAppBrandIcon size={18} /> Ask a Question
               </a>
             </div>
           </div>
@@ -1277,7 +1282,7 @@ function MapSection() {
                 <MapPin size={15} /> Get Directions
               </a>
               <a href={`https://wa.me/${CLINIC.whatsapp}`} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 border border-border text-foreground font-medium rounded-full px-5 py-2.5 text-sm hover:bg-muted transition-colors">
-                <MessageCircle size={15} /> Ask for Directions
+                <WhatsAppBrandIcon size={18} /> Ask for Directions
               </a>
             </div>
           </div>
@@ -1636,7 +1641,7 @@ function TestimonialsPage({ openBooking }: { openBooking: () => void }) {
               <Star size={15} /> Leave a Google Review
             </a>
             <a href={`https://wa.me/${CLINIC.whatsapp}?text=I%20would%20like%20to%20leave%20a%20review%20for%20Fastident.`} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-[#25D366] text-white font-bold py-3 px-6 rounded-full text-sm hover:bg-[#1da851] transition-colors">
-              <MessageCircle size={15} /> Share via WhatsApp
+              <WhatsAppBrandIcon size={17} /> Share via WhatsApp
             </a>
           </div>
         </div>
@@ -1663,10 +1668,58 @@ function ContactPage({ openBooking }: { openBooking: () => void }) {
 
   return (
     <div className="pt-20">
-      <div className="bg-primary text-white py-16 px-4 sm:px-6 text-center">
-        <span className="text-accent font-semibold text-sm uppercase tracking-widest mb-3 block">Get in Touch</span>
-        <h1 className="text-3xl md:text-5xl font-extrabold mb-4" style={{ fontFamily: "Outfit, sans-serif" }}>Get in touch with the clinic</h1>
-        <p className="text-white/70 max-w-xl mx-auto">Call, send a message, or use WhatsApp if you need directions, pricing, or general information.</p>
+      <div className="bg-primary text-white px-4 sm:px-6">
+        <div className="max-w-7xl mx-auto py-14 md:py-18 grid lg:grid-cols-[1.05fr_0.95fr] gap-10 items-center">
+          <div className="text-center lg:text-left">
+            <span className="text-accent font-semibold text-sm uppercase tracking-widest mb-3 block">Get in Touch</span>
+            <h1 className="text-3xl md:text-5xl font-extrabold mb-4" style={{ fontFamily: "Outfit, sans-serif" }}>Get in touch with the clinic</h1>
+            <p className="text-white/70 max-w-xl lg:max-w-2xl mx-auto lg:mx-0 mb-7">Call, send a message, or use WhatsApp if you need directions, pricing, appointment help, or general information.</p>
+            <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
+              <a href={`tel:+234${CLINIC.phone1.slice(1)}`} className="inline-flex items-center justify-center gap-2 bg-white text-primary font-semibold rounded-full px-6 py-3 text-sm hover:bg-secondary transition-colors">
+                <Phone size={16} /> Call {CLINIC.phone1Display}
+              </a>
+              <a href={`https://wa.me/${CLINIC.whatsapp}?text=Hi%2C%20I%20need%20help%20with%20an%20appointment.`} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 bg-[#25D366] text-white font-semibold rounded-full px-6 py-3 text-sm hover:bg-[#1da851] transition-colors">
+                <WhatsAppBrandIcon size={18} /> WhatsApp Us
+              </a>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-7">
+              {[
+                { title: "Fast response", body: "WhatsApp messages are usually answered during working hours." },
+                { title: "Easy directions", body: "Call or message us if you need help finding the clinic." },
+                { title: "Booking support", body: "We can guide you to the right service before you book." },
+              ].map((item) => (
+                <div key={item.title} className="rounded-2xl border border-white/15 bg-white/8 px-4 py-4 text-left">
+                  <p className="font-semibold text-sm text-white">{item.title}</p>
+                  <p className="text-xs text-white/70 leading-relaxed mt-1.5">{item.body}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="relative">
+            <div className="relative overflow-hidden rounded-[28px] border border-white/10 shadow-2xl">
+              <img
+                src="https://images.unsplash.com/photo-1762625570087-6d98fca29531?w=1200&h=900&fit=crop&auto=format"
+                alt="Welcoming reception area at Fastident Dental Clinic"
+                className="w-full h-[320px] sm:h-[400px] object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-primary/75 via-primary/20 to-transparent" />
+              <div className="absolute left-5 right-5 bottom-5 rounded-2xl bg-white/95 text-foreground p-5 shadow-lg backdrop-blur-sm">
+                <p className="text-xs uppercase tracking-[0.18em] text-muted-foreground font-semibold">Visit the clinic</p>
+                <h3 className="mt-2 font-bold text-lg" style={{ fontFamily: "Outfit, sans-serif" }}>Fastident Dental Clinic</h3>
+                <p className="mt-2 text-sm text-muted-foreground leading-relaxed">Suite 4, All Seasons Plaza, Federal Junction, 1st Avenue, Gowon Estate, Ipaja, Lagos.</p>
+                <div className="flex flex-wrap gap-2 mt-4">
+                  <span className="inline-flex items-center gap-1.5 rounded-full bg-secondary px-3 py-1.5 text-xs font-medium text-foreground"><Clock size={13} /> Mon to Sat</span>
+                  <span className="inline-flex items-center gap-1.5 rounded-full bg-secondary px-3 py-1.5 text-xs font-medium text-foreground"><Phone size={13} /> {CLINIC.phone1Display}</span>
+                </div>
+              </div>
+            </div>
+            <div className="hidden md:block absolute -bottom-5 -left-5 rounded-2xl bg-white text-foreground p-4 shadow-xl border border-border max-w-[220px]">
+              <p className="font-semibold text-sm">Need a quick answer?</p>
+              <p className="text-xs text-muted-foreground mt-1.5 leading-relaxed">WhatsApp is the fastest way to ask about pricing, directions, or appointment times.</p>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12 grid md:grid-cols-2 gap-10">
@@ -1678,7 +1731,7 @@ function ContactPage({ openBooking }: { openBooking: () => void }) {
               { icon: <MapPin size={18} className="text-accent" />, label: "Address", content: CLINIC.address },
               { icon: <Phone size={18} className="text-accent" />, label: "Booking Line", content: CLINIC.phone1Display, href: `tel:+234${CLINIC.phone1.slice(1)}` },
               { icon: <Phone size={18} className="text-accent" />, label: "Alternate Line", content: CLINIC.phone2Display, href: `tel:+234${CLINIC.phone2.slice(1)}` },
-              { icon: <MessageCircle size={18} className="text-accent" />, label: "WhatsApp", content: "Chat with us instantly", href: `https://wa.me/${CLINIC.whatsapp}` },
+              { icon: <WhatsAppBrandIcon size={20} className="text-accent" />, label: "WhatsApp", content: "Chat with us instantly", href: `https://wa.me/${CLINIC.whatsapp}` },
               { icon: <Mail size={18} className="text-accent" />, label: "Email", content: CLINIC.email, href: `mailto:${CLINIC.email}` },
               { icon: <Clock size={18} className="text-accent" />, label: "Hours", content: "Mon to Fri 8AM to 6PM | Sat 8AM to 5PM | Sun Closed" },
             ].map(item => (
@@ -1702,6 +1755,31 @@ function ContactPage({ openBooking }: { openBooking: () => void }) {
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3964.4!2d3.2553!3d6.6205!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103b93be3a7a6f3b%3A0x0!2sGowon%20Estate%2C%20Ipaja%2C%20Lagos!5e0!3m2!1sen!2sng!4v1700000000000!5m2!1sen!2sng"
               width="100%" height="100%" style={{ border: 0 }} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade"
             />
+          </div>
+
+          <div className="mt-6 grid sm:grid-cols-2 gap-4">
+            <div className="overflow-hidden rounded-2xl border border-border bg-card">
+              <img
+                src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=900&h=600&fit=crop&auto=format"
+                alt="Treatment room at Fastident Dental Clinic"
+                className="w-full h-40 object-cover"
+              />
+              <div className="p-4">
+                <p className="font-semibold text-sm">Clean treatment rooms</p>
+                <p className="text-xs text-muted-foreground mt-1.5 leading-relaxed">A tidy clinical space helps patients feel settled before treatment starts.</p>
+              </div>
+            </div>
+            <div className="overflow-hidden rounded-2xl border border-border bg-card">
+              <img
+                src="https://images.unsplash.com/photo-1685022036574-12bffde5e2b7?w=900&h=600&fit=crop&auto=format"
+                alt="Friendly dental team at Fastident Dental Clinic"
+                className="w-full h-40 object-cover"
+              />
+              <div className="p-4">
+                <p className="font-semibold text-sm">Friendly support</p>
+                <p className="text-xs text-muted-foreground mt-1.5 leading-relaxed">Our team can help with bookings, questions, and directions before you arrive.</p>
+              </div>
+            </div>
           </div>
 
           <div className="mt-5 flex gap-3">
@@ -1741,6 +1819,13 @@ function ContactPage({ openBooking }: { openBooking: () => void }) {
                     <textarea value={form.message} onChange={e => { setForm(p => ({ ...p, message: e.target.value })); setErrors(prev => ({ ...prev, message: "" })); }} placeholder="How can we help you?" rows={4} className="w-full border border-border rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary bg-muted resize-none" />
                     {errors.message && <p className="text-red-600 text-xs mt-1">{errors.message}</p>}
                   </div>
+                  <div className="rounded-2xl bg-secondary/70 border border-border p-4">
+                    <p className="text-sm font-semibold text-foreground">Need a faster reply?</p>
+                    <p className="text-xs text-muted-foreground mt-1.5 leading-relaxed">Use WhatsApp for quick questions about pricing, directions, emergency help, or available times.</p>
+                    <a href={`https://wa.me/${CLINIC.whatsapp}?text=Hi%2C%20I%20have%20a%20question%20for%20Fastident.`} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 mt-3 text-sm font-medium text-[#25D366] hover:text-[#1da851] transition-colors">
+                      <WhatsAppBrandIcon size={18} /> Chat on WhatsApp
+                    </a>
+                  </div>
                   <Btn variant="accent" onClick={submit} className="w-full justify-center">Send Message <ArrowRight size={15} /></Btn>
                 </div>
               </>
@@ -1750,7 +1835,7 @@ function ContactPage({ openBooking }: { openBooking: () => void }) {
                 <h3 className="font-bold text-lg mb-2" style={{ fontFamily: "Outfit, sans-serif" }}>Message Received!</h3>
                 <p className="text-muted-foreground text-sm leading-relaxed">We will get back to you within a few hours during working hours. For faster response, WhatsApp us directly.</p>
                 <a href={`https://wa.me/${CLINIC.whatsapp}`} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-[#25D366] text-white font-medium py-2.5 px-5 rounded-full text-sm mt-5 hover:bg-[#1da851] transition-colors">
-                  <MessageCircle size={15} /> WhatsApp Instead
+                  <WhatsAppBrandIcon size={17} /> WhatsApp Instead
                 </a>
               </div>
             )}
@@ -1811,7 +1896,7 @@ function FAQPage({ openBooking }: { openBooking: () => void }) {
           <p className="text-muted-foreground text-sm mb-5">Our team is available on WhatsApp during working hours and will reply to most messages within the hour.</p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <a href={`https://wa.me/${CLINIC.whatsapp}?text=Hi%2C%20I%20have%20a%20question%20about%20Fastident.`} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-[#25D366] text-white font-bold py-3 px-6 rounded-full text-sm hover:bg-[#1da851] transition-colors">
-              <MessageCircle size={15} /> WhatsApp Us
+              <WhatsAppBrandIcon size={17} /> WhatsApp Us
             </a>
             <Btn variant="primary" onClick={openBooking}>Book an Appointment</Btn>
           </div>
